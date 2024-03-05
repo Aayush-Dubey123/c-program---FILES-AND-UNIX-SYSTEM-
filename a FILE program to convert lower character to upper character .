@@ -1,0 +1,35 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main ()
+{
+    FILE *fptr1,*fptr2;
+    char filename[20],c,uc;
+     printf("enter name for new file to be created =");
+     scanf("%s",&filename);
+     fptr1 = fopen("new file","w");
+    if(fptr1 == NULL)
+    {
+        printf("new file cannot be created.");
+        exit(0);
+    }
+     printf(" enter name for new file to be created =");
+     scanf("%s",&filename);
+    fptr2 = fopen("new file","w");
+    if(fptr2 == NULL)
+    {
+        printf("new file cannot be created");
+        exit(0);
+    }
+    c =fgetc(fptr1);
+    while(c!= EOF)
+    { 
+        uc = (char)toupper(c);
+        fputc(c,fptr2);
+        c=fgetc(fptr1);
+    }
+    printf("copied");
+    fclose(fptr1);
+    fclose(fptr2);
+    return 0;
+}
